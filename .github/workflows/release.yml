@@ -4,9 +4,6 @@ on:
   push:
     tags:
       - "[0-9]+.*"
-    branches:
-      - master
-      - Master-Hash-patch-1
 
 jobs:
 
