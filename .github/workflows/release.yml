@@ -52,6 +52,7 @@ jobs:
           wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-29/wasi-sdk-29.0-x86_64-linux.deb
           sudo apt-get install ./wasi-sdk-29.0-x86_64-linux.deb
           rm ./wasi-sdk-29.0-x86_64-linux.deb
+          rustup override set stable
           rustup target add wasm32-wasip1
         if: ${{ matrix.target == 'wasm32-wasi' }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
