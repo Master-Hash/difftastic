@@ -68,9 +68,11 @@ jobs:
         env:
           # (required)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CC_WASM32_WASIP1: /opt/wasi-sdk/bin/clang
-          AR_WASM32_WASIP1: /opt/wasi-sdk/bin/llvm-ar
-          CFLAGS_WASM32_WASIP1: "--sysroot=/opt/wasi-sdk/share/wasi-sysroot -I/opt/wasi-sdk/share/wasi-sysroot/include/wasm32-wasip1"
+          WASI_SDK_PATH: /opt/wasi-sdk
+          WASI_SYSROOT: /opt/wasi-sdk/share/wasi-sysroot
+          CC_wasm32_wasip1: /opt/wasi-sdk/bin/clang
+          AR_wasm32_wasip1: /opt/wasi-sdk/bin/llvm-ar
+          CFLAGS_wasm32_wasip1: "--sysroot=/opt/wasi-sdk/share/wasi-sysroot -I/opt/wasi-sdk/share/wasi-sysroot/include/wasm32-wasip1"
 
   push_crates_io:
     runs-on: ubuntu-22.04
