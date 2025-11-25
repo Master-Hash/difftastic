@@ -37,7 +37,7 @@ jobs:
           # detects that they need cross).
           - target: x86_64-unknown-linux-musl
             os: ubuntu-22.04
-          - target: wasm32-wasi
+          - target: wasm32-wasip1
             os: ubuntu-24.04
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-22.04
@@ -54,7 +54,7 @@ jobs:
           rm ./wasi-sdk-29.0-x86_64-linux.deb
           rustup override set stable
           rustup target add wasm32-wasip1
-        if: ${{ matrix.target == 'wasm32-wasi' }}
+        if: ${{ matrix.target == 'wasm32-wasip1' }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
@@ -68,9 +68,9 @@ jobs:
         env:
           # (required)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CC_WASM32_WASI: /opt/wasi-sdk/bin/clang
-          AR_WASM32_WASI: /opt/wasi-sdk/bin/llvm-ar
-          CFLAGS_WASM32_WASI: "--sysroot=/opt/wasi-sdk/share/wasi-sysroot"
+          CC_WASM32_WASIP1: /opt/wasi-sdk/bin/clang
+          AR_WASM32_WASIP1: /opt/wasi-sdk/bin/llvm-ar
+          CFLAGS_WASM32_WASIP1: "--sysroot=/opt/wasi-sdk/share/wasi-sysroot"
 
   push_crates_io:
     runs-on: ubuntu-22.04
